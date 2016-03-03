@@ -1,5 +1,6 @@
 namespace Music.Migrations
 {
+    using Models;
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
@@ -26,7 +27,16 @@ namespace Music.Migrations
             //      new Person { FullName = "Brice Lambson" },
             //      new Person { FullName = "Rowan Miller" }
             //    );
-            //
+            context.Genres.AddOrUpdate(
+                g => g.Name,
+                new Genre { Name = "Disco" },
+                new Genre { Name = "Classical" }
+                );
+
+            context.Artists.AddOrUpdate(
+                a => a.Name,
+                new Artist { Name = "Bee Gees" }
+                );
         }
     }
 }
