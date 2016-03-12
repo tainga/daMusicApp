@@ -129,6 +129,8 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AlbumsController.cs" />
+    <Compile Include="Controllers\ArtistsController.cs" />
+    <Compile Include="Controllers\GenresController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -140,6 +142,22 @@
     <Compile Include="Migrations\201603031845212_TitleRequired.cs" />
     <Compile Include="Migrations\201603031845212_TitleRequired.Designer.cs">
       <DependentUpon>201603031845212_TitleRequired.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201603111946304_something.cs" />
+    <Compile Include="Migrations\201603111946304_something.Designer.cs">
+      <DependentUpon>201603111946304_something.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201603112348127_genreNameRestrictions.cs" />
+    <Compile Include="Migrations\201603112348127_genreNameRestrictions.Designer.cs">
+      <DependentUpon>201603112348127_genreNameRestrictions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201603120146415_artistNameRestrictions.cs" />
+    <Compile Include="Migrations\201603120146415_artistNameRestrictions.Designer.cs">
+      <DependentUpon>201603120146415_artistNameRestrictions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201603120327285_last.cs" />
+    <Compile Include="Migrations\201603120327285_last.Designer.cs">
+      <DependentUpon>201603120327285_last.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Album.cs" />
@@ -157,6 +175,8 @@
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <None Include="Properties\PublishProfiles\damusicapp %282%29.pubxml" />
+    <None Include="Properties\PublishProfiles\damusicapp.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -169,7 +189,9 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -188,6 +210,18 @@
     <Content Include="Views\Albums\Details.cshtml" />
     <Content Include="Views\Albums\Edit.cshtml" />
     <Content Include="Views\Albums\Index.cshtml" />
+    <Content Include="Views\Genres\Create.cshtml" />
+    <Content Include="Views\Genres\Delete.cshtml" />
+    <Content Include="Views\Genres\Details.cshtml" />
+    <Content Include="Views\Genres\Edit.cshtml" />
+    <Content Include="Views\Genres\Index.cshtml" />
+    <Content Include="Views\Albums\ByGenre.cshtml" />
+    <Content Include="Views\Artists\Create.cshtml" />
+    <Content Include="Views\Artists\Delete.cshtml" />
+    <Content Include="Views\Artists\Details.cshtml" />
+    <Content Include="Views\Artists\Edit.cshtml" />
+    <Content Include="Views\Artists\Index.cshtml" />
+    <Content Include="Views\Albums\ByArtist.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -206,6 +240,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201603031845212_TitleRequired.resx">
       <DependentUpon>201603031845212_TitleRequired.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603111946304_something.resx">
+      <DependentUpon>201603111946304_something.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603112348127_genreNameRestrictions.resx">
+      <DependentUpon>201603112348127_genreNameRestrictions.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603120146415_artistNameRestrictions.resx">
+      <DependentUpon>201603120146415_artistNameRestrictions.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603120327285_last.resx">
+      <DependentUpon>201603120327285_last.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

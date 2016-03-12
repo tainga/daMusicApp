@@ -1,15 +1,15 @@
 ﻿@model IEnumerable<Music.Models.Album>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Albums";
 }
 
-<h2>Index</h2>
+<h2>All Albums</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    <button onclick="location.href='@Url.Action("Create")';return false;" class="btn btn-default">Add New Album</button>
 </p>
-<table class="table">
+<table class="table table-hover">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.Artist)
@@ -40,11 +40,11 @@
         <td>
             @Html.DisplayFor(modelItem => item.Price)
         </td>
-        <td>
+        @*<td>
             @Html.ActionLink("Edit", "Edit", new { id=item.AlbumID }) |
             @Html.ActionLink("Details", "Details", new { id=item.AlbumID }) |
             @Html.ActionLink("Delete", "Delete", new { id=item.AlbumID })
-        </td>
+        </td>*@
     </tr>
 }
 
