@@ -21,28 +21,6 @@ namespace Music.Controllers
             return View(albums.ToList());
         }
 
-        public ActionResult ByGenre(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            var albums = db.Albums.Include(a => a.Artist).Include(a => a.Genre).Where(a => a.AlbumID == id);
-            
-            return View(albums);
-        }
-
-        public ActionResult ByArtist(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            var albums = db.Albums.Include(a => a.Artist).Include(a => a.Artist).Where(a => a.ArtistID == id);
-
-            return View(albums);
-        }
-
         // GET: Albums/Details/5
         public ActionResult Details(int? id)
         {

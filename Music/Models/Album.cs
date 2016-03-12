@@ -15,8 +15,6 @@ namespace Music.Models
         [Display(Name ="Genre")]
         public int GenreID { get; set; }
         public Genre Genre { get; set; }
-        [Required(ErrorMessage = "Price is required")]
-        [Range(typeof(Decimal), "0.01", "100.00", ErrorMessage = "Price must be between $0.01 and $100")]
         public decimal Price { get; set; }
         [Display(Name = "Artist")]
         public int ArtistID { get; set; }
