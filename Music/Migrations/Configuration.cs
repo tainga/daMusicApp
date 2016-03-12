@@ -30,12 +30,14 @@ namespace Music.Migrations
             context.Genres.AddOrUpdate(
                 g => g.Name,
                 new Genre { Name = "Disco" },
-                new Genre { Name = "Classical" }
+                new Genre { Name = "Classical" },
+                new Genre { Name = "Opera"}
                 );
 
             context.Artists.AddOrUpdate(
                 a => a.Name,
-                new Artist { Name = "Bee Gees" }
+                new Artist { Name = "Bee Gees" },
+                new Artist { Name = "Puccini" }
                 );
         }
     }
