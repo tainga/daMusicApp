@@ -159,6 +159,10 @@
     <Compile Include="Migrations\201603120327285_last.Designer.cs">
       <DependentUpon>201603120327285_last.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201603120626478_one.cs" />
+    <Compile Include="Migrations\201603120626478_one.Designer.cs">
+      <DependentUpon>201603120626478_one.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Album.cs" />
     <Compile Include="Models\Artist.cs" />
@@ -175,8 +179,8 @@
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <None Include="Properties\PublishProfiles\damusicapp %282%29.pubxml" />
-    <None Include="Properties\PublishProfiles\damusicapp.pubxml" />
+    <None Include="Properties\PublishProfiles\DaMusicApp - Web Deploy %282%29.pubxml" />
+    <None Include="Properties\PublishProfiles\DaMusicApp - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -252,6 +256,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201603120327285_last.resx">
       <DependentUpon>201603120327285_last.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603120626478_one.resx">
+      <DependentUpon>201603120626478_one.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
