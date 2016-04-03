@@ -15,11 +15,18 @@ namespace Music.Controllers
         private MusicContext db = new MusicContext();
 
         // GET: Albums
-        public ActionResult Index()
+        public ActionResult Index(string searchString)
         {
             var albums = db.Albums.Include(a => a.Artist).Include(a => a.Genre);
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                albums = albums.Where(s => s.Title.Contains(searchString) || s.Genre.Name.Contains(searchString) || s.Artist.Name.Contains(searchString));
+            }
+
             return View(albums.ToList());
         }
+
 
         public ActionResult ByGenre(int? id)
         {
@@ -27,7 +34,7 @@ namespace Music.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            var albums = db.Albums.Include(a => a.Artist).Include(a => a.Genre).Where(a => a.AlbumID == id);
+            var albums = db.Albums.Include(a => a.Artist).Include(a => a.Genre).Where(a => a.GenreID == id);
             
             return View(albums);
         }
@@ -57,6 +64,7 @@ namespace Music.Controllers
             }
             return View(album);
         }
+
 
         // GET: Albums/Create
         public ActionResult Create()

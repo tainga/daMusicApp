@@ -6,46 +6,59 @@
 
 <h2>All Albums</h2>
 
-<p>
-    <button onclick="location.href='@Url.Action("Create")';return false;" class="btn btn-default">Add New Album</button>
-</p>
-<table class="table table-hover">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Artist)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Genre)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Title)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Price)
-        </th>
-        <th></th>
-    </tr>
+<button onclick="location.href='@Url.Action("Create")';return false;" class="btn btn-default">Add New Album</button><br /><br />
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Artist.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Genre.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Title)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Price)
-        </td>
-        @*<td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.AlbumID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.AlbumID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.AlbumID })
-        </td>*@
-    </tr>
-}
+    @using (Html.BeginForm("Index", "Albums", FormMethod.Get))
+    {
+            <div class="input-group">
+                <span class="input-group-btn">
+                    <input class="form-control" type="text" name="searchString" id="search" placeholder="search"/>
+                    <button class="btn" type="submit" value="Search"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+                </span>
+            </div>
+    }
+<br />
 
-</table>
+
+
+    <table class="table table-hover">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Artist)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Genre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Artist.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Genre.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                @*<td>
+                        @Html.ActionLink("Edit", "Edit", new { id=item.AlbumID }) |
+                        @Html.ActionLink("Details", "Details", new { id=item.AlbumID }) |
+                        @Html.ActionLink("Delete", "Delete", new { id=item.AlbumID })
+                    </td>*@
+            </tr>
+        }
+
+    </table>
