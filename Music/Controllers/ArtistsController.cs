@@ -50,8 +50,8 @@ namespace Music.Controllers
         {
             if (ModelState.IsValid)
             {
-                var exist = (from g in db.Artists where g.Name.Contains(artist.Name) select g).Count() > 0;
-                if (!exist)
+                
+                if (!db.Artists.Any(ac => ac.Name.Equals(artist.Name)))
                 {
                     db.Artists.Add(artist);
                     db.SaveChanges();

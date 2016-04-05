@@ -19,46 +19,34 @@
     }
 <br />
 
+@{ 
+    WebGrid grid = new WebGrid(Model, rowsPerPage: 1, ajaxUpdateContainerId: "gridContent");
+}
 
+    <div id="gridContent">
 
-    <table class="table table-hover">
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Artist)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Genre)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Title)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Price)
-            </th>
-            <th></th>
-        </tr>
+        @grid.GetHtml(
+                         tableStyle: "table",
+                         columns: grid.Columns(
+                               grid.Column("ArtistID", "Artist", format: item => item.Artist.Name),
+                               grid.Column("GenreID", "Genre", format: item => item.Genre.Name),
+                               grid.Column("Title", "Title"),
+                               grid.Column("Price", "Price"),
+                               grid.Column("Likes", "Likes",
+                                  format: @<text>@item.likes @Html.ActionLink("Like", "Like", new { id = item.AlbumID })</text>),
+                               grid.Column
+                               (
+                                  format: (item) => Html.ActionLink("Edit", "Edit", new { id = item.AlbumID })
+                               ),
+                               grid.Column
+                               (
+                                    format: (item) => Html.ActionLink("Details", "Details", new { id = item.AlbumID })
+                               ),
+                               grid.Column
+                               (
+                                  format: (item) => Html.ActionLink("Delete", "Delete", new { id = item.AlbumID })
+                               )
+                        ))
 
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Artist.Name)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Genre.Name)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Title)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Price)
-                </td>
-                @*<td>
-                        @Html.ActionLink("Edit", "Edit", new { id=item.AlbumID }) |
-                        @Html.ActionLink("Details", "Details", new { id=item.AlbumID }) |
-                        @Html.ActionLink("Delete", "Delete", new { id=item.AlbumID })
-                    </td>*@
-            </tr>
-        }
-
-    </table>
+    </div>
+  

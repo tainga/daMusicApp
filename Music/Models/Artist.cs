@@ -8,5 +8,6 @@ namespace Music.Models
         [Required(ErrorMessage = "Artist name is required")]
         [StringLength(20, ErrorMessage = "Artist name cannot be longer than 20 characters.")]
         public string Name { get; set; }
+        public string Bio { get; set; }
     }
 }
