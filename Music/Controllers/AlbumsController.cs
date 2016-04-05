@@ -55,7 +55,10 @@ namespace Music.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             var albums = db.Albums.Include(a => a.Artist).Include(a => a.Genre).Where(a => a.GenreID == id);
-            
+            if (albums.Count() == 0)
+            {
+                return View(albums);
+            }
             return View("Index", albums);
         }
 
@@ -66,7 +69,10 @@ namespace Music.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             var albums = db.Albums.Include(a => a.Artist).Include(a => a.Artist).Where(a => a.ArtistID == id);
-
+            if (albums.Count() == 0)
+            {
+                return View(albums);
+            }
             return View("Index", albums);
         }
 
