@@ -20,7 +20,7 @@
 <br />
 
 @{ 
-    WebGrid grid = new WebGrid(Model, rowsPerPage: 1, ajaxUpdateContainerId: "gridContent");
+    WebGrid grid = new WebGrid(Model, rowsPerPage: 2, ajaxUpdateContainerId: "gridContent");
 }
 
     <div id="gridContent">
@@ -33,20 +33,18 @@
                                grid.Column("Title", "Title"),
                                grid.Column("Price", "Price"),
                                grid.Column("Likes", "Likes",
-                                  format: @<text>@item.likes @Html.ActionLink("Like", "Like", new { id = item.AlbumID })</text>),
+                                  format: @<text>@item.likes @Html.ActionLink("Like", "Like", new { id = item.AlbumID }) </text>),
                                grid.Column
                                (
-                                  format: (item) => Html.ActionLink("Edit", "Edit", new { id = item.AlbumID })
-                               ),
-                               grid.Column
-                               (
-                                    format: (item) => Html.ActionLink("Details", "Details", new { id = item.AlbumID })
-                               ),
-                               grid.Column
-                               (
-                                  format: (item) => Html.ActionLink("Delete", "Delete", new { id = item.AlbumID })
+                                    format: item => new HtmlString
+                                    (
+                                        Html.ActionLink("Edit", "Edit", new { id = item.AlbumID }).ToString() + " " + 
+                                        Html.ActionLink("Details", "Details", new { id = item.AlbumID }).ToString() + " " + 
+                                        Html.ActionLink("Delete", "Delete", new { id = item.AlbumID }).ToString()
+                                    )
                                )
-                        ))
+                            )
+                        )
 
     </div>
   
