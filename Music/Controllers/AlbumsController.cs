@@ -29,22 +29,13 @@ namespace Music.Controllers
 
         public ActionResult Like(int? id)
         {
-            var albums = db.Albums.Include(a => a.Artist).Include(a => a.Genre);
-            return View("Index", albums);
-        
-        }
+            //var albums = db.Albums.Include(a => a.Artist).Include(a => a.Genre);
+            //return View("Index", albums);
+            Album album = db.Albums.Find(id);
+            album.Likes++;
+            db.SaveChanges();
+            return RedirectToAction("Index");
 
-        [HttpPost, ActionName("Like")]
-        [ValidateAntiForgeryToken]
-        public ActionResult LikeConf(int? id)
-        {
-
-            {
-                Album album = db.Albums.Find(id);
-                album.Likes++;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
         }
 
         //return Redirect(HttpContext.Request.UrlReferrer.AbsoluteUri);
@@ -54,7 +45,9 @@ namespace Music.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+            //var albums = db.Albums.Include(a => a.Genre).Where(a => a.GenreID == id);
             var albums = db.Albums.Include(a => a.Artist).Include(a => a.Genre).Where(a => a.GenreID == id);
+
             if (albums.Count() == 0)
             {
                 return View(albums);
@@ -68,7 +61,7 @@ namespace Music.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            var albums = db.Albums.Include(a => a.Artist).Include(a => a.Artist).Where(a => a.ArtistID == id);
+            var albums = db.Albums.Include(a => a.Artist).Include(a => a.Genre).Where(a => a.ArtistID == id);
             if (albums.Count() == 0)
             {
                 return View(albums);
@@ -89,6 +82,7 @@ namespace Music.Controllers
                 return HttpNotFound();
             }
             var albums = db.Albums.Include(a => a.Artist).Include(a => a.Genre).Where(a => a.GenreID == album.GenreID || a.ArtistID == album.ArtistID).OrderBy(x => x.Likes).ToList();
+            albums.Remove(db.Albums.Find(id));
             albums = albums.Take(5).ToList();
             ViewBag.Suggested = albums;
             
@@ -170,6 +164,8 @@ namespace Music.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.Artist = album.Artist;
+            ViewBag.GenreID = new SelectList(db.Genres, "GenreID", "Name", album.GenreID);
             return View(album);
         }
 
