@@ -52,8 +52,8 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.AlbumID })
-    @Html.ActionLink("Back to Albums", "Index")
+    @Html.ActionLink("Edit", "Edit", new { id = Model.AlbumID }, new { @class = "btn btn-default" }) | 
+    @Html.ActionLink("Back to Albums", "Index", "Albums", new { @class = "btn btn-primary" })
 </p>
 <h3>Suggested Albums:</h3>
 <ul>
