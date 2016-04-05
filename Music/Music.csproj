@@ -163,6 +163,18 @@
     <Compile Include="Migrations\201603120626478_one.Designer.cs">
       <DependentUpon>201603120626478_one.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201604040221075_addLikes.cs" />
+    <Compile Include="Migrations\201604040221075_addLikes.Designer.cs">
+      <DependentUpon>201604040221075_addLikes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201604050404487_Likes.cs" />
+    <Compile Include="Migrations\201604050404487_Likes.Designer.cs">
+      <DependentUpon>201604050404487_Likes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201604050721294_Bio.cs" />
+    <Compile Include="Migrations\201604050721294_Bio.Designer.cs">
+      <DependentUpon>201604050721294_Bio.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Album.cs" />
     <Compile Include="Models\Artist.cs" />
@@ -259,6 +271,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201603120626478_one.resx">
       <DependentUpon>201603120626478_one.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604040221075_addLikes.resx">
+      <DependentUpon>201604040221075_addLikes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604050404487_Likes.resx">
+      <DependentUpon>201604050404487_Likes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604050721294_Bio.resx">
+      <DependentUpon>201604050721294_Bio.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
