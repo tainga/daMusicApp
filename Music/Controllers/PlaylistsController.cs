@@ -75,8 +75,11 @@ namespace Music.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Playlists.Add(playlist);
-                db.SaveChanges();
+                if (!db.Playlists.Any(ac => ac.Name.Equals(playlist.Name)))
+                {
+                    db.Playlists.Add(playlist);
+                    db.SaveChanges();
+                }
                 return RedirectToAction("Index");
             }
 

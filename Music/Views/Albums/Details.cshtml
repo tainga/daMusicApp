@@ -17,6 +17,13 @@
         <dd>
             @Html.DisplayFor(model => model.Artist.Name)
         </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Artist.Bio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Artist.Bio)
+        </dd>
 
         <dt>
             @Html.DisplayNameFor(model => model.Genre)
@@ -52,14 +59,13 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.AlbumID }, new { @class = "btn btn-default" }) | 
+    @Html.ActionLink("Edit", "Edit", new { id = Model.AlbumID }, new { @class = "btn btn-default" }) 
     @Html.ActionLink("Back to Albums", "Index", "Albums", new { @class = "btn btn-primary" })
 </p>
 <h3>Suggested Albums:</h3>
 <ul>
     @foreach (var al in ViewBag.Suggested)
     {
-
         <li>@al.Title by @al.Artist.Name</li>
     }
 </ul>

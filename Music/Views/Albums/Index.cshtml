@@ -20,7 +20,7 @@
 <br />
 
 @{ 
-    WebGrid grid = new WebGrid(Model, rowsPerPage: 2, ajaxUpdateContainerId: "gridContent");
+    WebGrid grid = new WebGrid(Model, rowsPerPage: 10, ajaxUpdateContainerId: "gridContent");
 }
 
     <div id="gridContent">
@@ -33,16 +33,19 @@
                                grid.Column("Title", "Title"),
                                grid.Column("Price", "Price"),
                                grid.Column("Likes", "Likes",
-                                  format: @<text>@item.likes @Html.ActionLink("Like", "Like", new { id = item.AlbumID }) </text>),
+                                  @*format: @<text>@item.likes @Html.ActionLink("Like", "Like", new { id = item.AlbumID }) </text>*@
+                                   format: (item) => new HtmlString(item.likes + "<a href=" + @Url.Action("Like", new { id = item.AlbumID }) + " title='Like' > <i class='glyphicon glyphicon-thumbs-up'> </i> <span class='sr-only'> Like </span> </a> ")
+                                                                                                                              ),
                                grid.Column
                                (
                                     format: item => new HtmlString
                                     (
                                         Html.ActionLink("Add to Playlist", "AddAlbum", "Playlists", new { id = item.AlbumID }, null).ToString() + " | " +
-                                        Html.ActionLink("Edit", "Edit", new { id = item.AlbumID }).ToString() + " | " + 
-                                        Html.ActionLink("Details", "Details", new { id = item.AlbumID }).ToString() + " | " + 
+                                        Html.ActionLink("Edit", "Edit", new { id = item.AlbumID }).ToString() + " | " +
+                                        Html.ActionLink("Details", "Details", new { id = item.AlbumID }).ToString() + " | " +
                                         Html.ActionLink("Delete", "Delete", new { id = item.AlbumID }).ToString()
                                     )
+                                    
                                )
                             )
                         )

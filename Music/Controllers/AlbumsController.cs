@@ -81,7 +81,7 @@ namespace Music.Controllers
             {
                 return HttpNotFound();
             }
-            var albums = db.Albums.Include(a => a.Artist).Include(a => a.Genre).Where(a => a.GenreID == album.GenreID || a.ArtistID == album.ArtistID).OrderBy(x => x.Likes).ToList();
+            var albums = db.Albums.Include(a => a.Artist).Include(a => a.Genre).Where(a => a.GenreID == album.GenreID || a.ArtistID == album.ArtistID).OrderByDescending(x => x.Likes).ToList();
             albums.Remove(db.Albums.Find(id));
             albums = albums.Take(5).ToList();
             ViewBag.Suggested = albums;
@@ -159,7 +159,7 @@ namespace Music.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Album album = db.Albums.Find(id);
+            Album album = db.Albums.Include(a => a.Artist).Include(a => a.Genre).Where(a => a.AlbumID == id).SingleOrDefault();
             if (album == null)
             {
                 return HttpNotFound();
