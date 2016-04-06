@@ -10,111 +10,132 @@ using Music.Models;
 
 namespace Music.Controllers
 {
-    public class ArtistsController : Controller
+    public class PlaylistsController : Controller
     {
         private MusicContext db = new MusicContext();
 
-        // GET: Artists
+        // GET: Playlists
         public ActionResult Index()
         {
-            return View(db.Artists.ToList().OrderBy(x => x.Name));
+            return View(db.Playlists.ToList());
         }
 
-        // GET: Artists/Details/5
+        public ActionResult AddAlbum(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Album album = db.Albums.Find(id);
+            if (album == null)
+            {
+                return HttpNotFound();
+            }
+            ViewBag.PlaylistID = new SelectList(db.Playlists.OrderBy(x => x.Name), "PlaylistID", "Name");
+            return View(album);
+        }
+
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult AddAlbum([Bind(Include = "PlaylistID")] Album album)
+        //{
+
+        //}
+
+        // GET: Playlists/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Artist artist = db.Artists.Find(id);
-            if (artist == null)
+            Playlist playlist = db.Playlists.Find(id);
+            
+            if (playlist == null)
             {
                 return HttpNotFound();
             }
-            return View(artist);
+            var albums = db.Albums.Include(a => a.Artist).Include(a => a.Genre).Where(a => a.Playlists.Contains(playlist));
+            ViewBag.al = albums;
+            return View(albums);
         }
 
-        // GET: Artists/Create
+        // GET: Playlists/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Artists/Create
+        // POST: Playlists/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ArtistID,Name,Bio")] Artist artist)
+        public ActionResult Create([Bind(Include = "PlaylistID,Name")] Playlist playlist)
         {
             if (ModelState.IsValid)
             {
-                
-                if (!db.Artists.Any(ac => ac.Name.Equals(artist.Name)))
-                {
-                    db.Artists.Add(artist);
-                    db.SaveChanges();
-                }
+                db.Playlists.Add(playlist);
+                db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(artist);
+            return View(playlist);
         }
 
-        // GET: Artists/Edit/5
+        // GET: Playlists/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Artist artist = db.Artists.Find(id);
-            if (artist == null)
+            Playlist playlist = db.Playlists.Find(id);
+            if (playlist == null)
             {
                 return HttpNotFound();
             }
-            return View(artist);
+            return View(playlist);
         }
 
-        // POST: Artists/Edit/5
+        // POST: Playlists/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ArtistID,Name,Bio")] Artist artist)
+        public ActionResult Edit([Bind(Include = "PlaylistID,Name")] Playlist playlist)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(artist).State = EntityState.Modified;
+                db.Entry(playlist).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(artist);
+            return View(playlist);
         }
 
-        // GET: Artists/Delete/5
+        // GET: Playlists/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Artist artist = db.Artists.Find(id);
-            if (artist == null)
+            Playlist playlist = db.Playlists.Find(id);
+            if (playlist == null)
             {
                 return HttpNotFound();
             }
-            return View(artist);
+            return View(playlist);
         }
 
-        // POST: Artists/Delete/5
+        // POST: Playlists/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Artist artist = db.Artists.Find(id);
-            db.Artists.Remove(artist);
+            Playlist playlist = db.Playlists.Find(id);
+            db.Playlists.Remove(playlist);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

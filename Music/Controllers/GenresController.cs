@@ -17,7 +17,7 @@ namespace Music.Controllers
         // GET: Genres
         public ActionResult Index()
         {
-            return View(db.Genres.ToList());
+            return View(db.Genres.ToList().OrderBy(x => x.Name));
         }
 
 

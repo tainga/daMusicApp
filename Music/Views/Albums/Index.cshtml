@@ -38,8 +38,9 @@
                                (
                                     format: item => new HtmlString
                                     (
-                                        Html.ActionLink("Edit", "Edit", new { id = item.AlbumID }).ToString() + " " + 
-                                        Html.ActionLink("Details", "Details", new { id = item.AlbumID }).ToString() + " " + 
+                                        Html.ActionLink("Add to Playlist", "AddAlbum", "Playlists", new { id = item.AlbumID }, null).ToString() + " | " +
+                                        Html.ActionLink("Edit", "Edit", new { id = item.AlbumID }).ToString() + " | " + 
+                                        Html.ActionLink("Details", "Details", new { id = item.AlbumID }).ToString() + " | " + 
                                         Html.ActionLink("Delete", "Delete", new { id = item.AlbumID }).ToString()
                                     )
                                )

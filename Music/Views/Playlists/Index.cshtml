@@ -1,0 +1,31 @@
+﻿@model IEnumerable<Music.Models.Playlist>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+    <button onclick="location.href='@Url.Action("Create")';return false;" class="btn btn-default">Add New Playlist</button><br /><br />
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.ActionLink(item.Name, "Details", new { id = item.PlaylistID })
+        </td>
+        <td>
+            @Html.ActionLink("Rename", "Edit", new { id=item.PlaylistID }) |      
+            @Html.ActionLink("Delete", "Delete", new { id=item.PlaylistID })
+        </td>
+    </tr>
+}
+
+</table>

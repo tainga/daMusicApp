@@ -132,6 +132,7 @@
     <Compile Include="Controllers\ArtistsController.cs" />
     <Compile Include="Controllers\GenresController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\PlaylistsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -175,9 +176,18 @@
     <Compile Include="Migrations\201604050721294_Bio.Designer.cs">
       <DependentUpon>201604050721294_Bio.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201604052245544_playlists.cs" />
+    <Compile Include="Migrations\201604052245544_playlists.Designer.cs">
+      <DependentUpon>201604052245544_playlists.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201604052251324_playlists2.cs" />
+    <Compile Include="Migrations\201604052251324_playlists2.Designer.cs">
+      <DependentUpon>201604052251324_playlists2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Album.cs" />
     <Compile Include="Models\Artist.cs" />
+    <Compile Include="Models\Playlist.cs" />
     <Compile Include="Models\Genre.cs" />
     <Compile Include="Models\MusicContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -238,6 +248,12 @@
     <Content Include="Views\Artists\Edit.cshtml" />
     <Content Include="Views\Artists\Index.cshtml" />
     <Content Include="Views\Albums\ByArtist.cshtml" />
+    <Content Include="Views\Playlists\Create.cshtml" />
+    <Content Include="Views\Playlists\Delete.cshtml" />
+    <Content Include="Views\Playlists\Details.cshtml" />
+    <Content Include="Views\Playlists\Edit.cshtml" />
+    <Content Include="Views\Playlists\Index.cshtml" />
+    <Content Include="Views\Playlists\AddAlbum.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -280,6 +296,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201604050721294_Bio.resx">
       <DependentUpon>201604050721294_Bio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604052245544_playlists.resx">
+      <DependentUpon>201604052245544_playlists.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604052251324_playlists2.resx">
+      <DependentUpon>201604052251324_playlists2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

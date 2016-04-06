@@ -1,0 +1,31 @@
+﻿@model Music.Models.Album
+
+@{
+    ViewBag.Title = "AddAlbum";
+}
+
+<h2>Select playlist for @Html.DisplayFor(model => model.Title)</h2>
+<br/>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        
+        <div class="form-group form-inline">
+           
+            
+                @Html.DropDownList("PlaylistID", null, htmlAttributes: new { @class = "form-control" })
+                @*@Html.ValidationMessageFor(model => model.PlaylistID, "", new { @class = "text-danger" })*@
+
+                <input type="submit" value="Add" class="btn btn-primary" />
+                <button onclick="location.href='@Url.Action("Index")';return false;" class="btn btn-default">Cancel</button>
+        </div>
+    </div>
+}
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
