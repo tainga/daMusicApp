@@ -33,7 +33,7 @@
                                grid.Column("Title", "Title"),
                                grid.Column("Price", "Price"),
                                grid.Column("Likes", "Likes",
-                                  @*format: @<text>@item.likes @Html.ActionLink("Like", "Like", new { id = item.AlbumID }) </text>*@
+                                  
                                    format: (item) => new HtmlString(item.likes + "<a href=" + @Url.Action("Like", new { id = item.AlbumID }) + " title='Like' > <i class='glyphicon glyphicon-thumbs-up'> </i> <span class='sr-only'> Like </span> </a> ")
                                                                                                                               ),
                                grid.Column

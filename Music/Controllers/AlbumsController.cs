@@ -29,13 +29,18 @@ namespace Music.Controllers
 
         public ActionResult Like(int? id)
         {
-            //var albums = db.Albums.Include(a => a.Artist).Include(a => a.Genre);
-            //return View("Index", albums);
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
             Album album = db.Albums.Find(id);
+            if (album == null)
+            {
+                return HttpNotFound();
+            }
             album.Likes++;
             db.SaveChanges();
             return RedirectToAction("Index");
-
         }
 
         //return Redirect(HttpContext.Request.UrlReferrer.AbsoluteUri);
