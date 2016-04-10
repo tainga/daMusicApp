@@ -1,24 +1,22 @@
-﻿@model IEnumerable<Music.Models.Album>
+﻿@model Music.Models.Playlist
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Playlist Details";
 }
-
-<h2>Details</h2>
+<br />
+<h2>Playlist: @Model.Name</h2>
 
 <div>
-    <h4>Playlist</h4>
-    <hr />
+    <h3>Albums:</h3>
     <ul>
-      
-        @foreach (var item in ViewBag.al)
+        @foreach (var al in Model.Albums.ToList())
         {
-           <li>@item.Title by @item.Artist.Name</li>
+            <li>@al.Title</li>
         }
-
     </ul>
 </div>
+<br />
 <p>
     <button onclick="location.href='@Url.Action("Index")';return false;" class="btn btn-default">Back to playlists</button>
-    <button onclick="location.href='@Url.Action("Index", "Albums")';return false;" class="btn btn-default">Add more albums</button>
+    <button onclick="location.href='@Url.Action("Index", "Albums")';return false;" class="btn btn-primary">Add more albums</button>
 </p>

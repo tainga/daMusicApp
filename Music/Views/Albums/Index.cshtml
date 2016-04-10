@@ -19,11 +19,11 @@
     }
 <br />
 
-@{ 
-    WebGrid grid = new WebGrid(Model, rowsPerPage: 10, ajaxUpdateContainerId: "gridContent");
-}
-
     <div id="gridContent">
+
+        @{
+            WebGrid grid = new WebGrid(Model, rowsPerPage: 10, ajaxUpdateContainerId: "gridContent");
+        }
 
         @grid.GetHtml(
                          tableStyle: "table",

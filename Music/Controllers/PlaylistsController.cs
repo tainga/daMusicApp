@@ -31,16 +31,34 @@ namespace Music.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.id = id;
             ViewBag.PlaylistID = new SelectList(db.Playlists.OrderBy(x => x.Name), "PlaylistID", "Name");
             return View(album);
         }
 
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public ActionResult AddAlbum([Bind(Include = "PlaylistID")] Album album)
-        //{
-
-        //}
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult AddAlbum(FormCollection form)
+        {
+            //System.Diagnostics.Debug.WriteLine("album id: " + Url.RequestContext.RouteData.Values["id"]);
+            int alid = Int32.Parse(Url.RequestContext.RouteData.Values["id"].ToString());
+            if (form == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Album album = db.Albums.Include(x => x.Artist).Include(x => x.Genre).Include(x => x.Playlists).Where(x => x.AlbumID == alid).Single();
+            int plid = Int32.Parse(form["PlaylistID"]);
+            //System.Diagnostics.Debug.WriteLine("playlist id: " + test);
+            Playlist playlist = db.Playlists.Include(x => x.Albums).Where(x => x.PlaylistID == plid).Single();
+            if (ModelState.IsValid)
+            {
+                db.Playlists.Find(plid).Albums.Add(album);
+                db.Albums.Find(alid).Playlists.Add(playlist);
+                db.SaveChanges();
+            }
+            //ViewBag.test = playlist.Albums;
+            return View("Details", playlist);
+        }
 
         // GET: Playlists/Details/5
         public ActionResult Details(int? id)
@@ -55,9 +73,9 @@ namespace Music.Controllers
             {
                 return HttpNotFound();
             }
-            var albums = db.Albums.Include(a => a.Artist).Include(a => a.Genre).Where(a => a.Playlists.Contains(playlist));
-            ViewBag.al = albums;
-            return View(albums);
+            //var albums = db.Albums.Include(a => a.Artist).Include(a => a.Genre).Where(a => a.Playlists.Contains(playlist));
+            //ViewBag.al = albums;
+            return View(playlist);
         }
 
         // GET: Playlists/Create

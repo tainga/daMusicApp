@@ -184,6 +184,26 @@
     <Compile Include="Migrations\201604052251324_playlists2.Designer.cs">
       <DependentUpon>201604052251324_playlists2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201604100231547_lists.cs" />
+    <Compile Include="Migrations\201604100231547_lists.Designer.cs">
+      <DependentUpon>201604100231547_lists.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201604100335182_IEnumerable.cs" />
+    <Compile Include="Migrations\201604100335182_IEnumerable.Designer.cs">
+      <DependentUpon>201604100335182_IEnumerable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201604100348274_IEnumerable1.cs" />
+    <Compile Include="Migrations\201604100348274_IEnumerable1.Designer.cs">
+      <DependentUpon>201604100348274_IEnumerable1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201604100348590_ICollection.cs" />
+    <Compile Include="Migrations\201604100348590_ICollection.Designer.cs">
+      <DependentUpon>201604100348590_ICollection.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201604100447341_virtual.cs" />
+    <Compile Include="Migrations\201604100447341_virtual.Designer.cs">
+      <DependentUpon>201604100447341_virtual.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Album.cs" />
     <Compile Include="Models\Artist.cs" />
@@ -302,6 +322,21 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201604052251324_playlists2.resx">
       <DependentUpon>201604052251324_playlists2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604100231547_lists.resx">
+      <DependentUpon>201604100231547_lists.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604100335182_IEnumerable.resx">
+      <DependentUpon>201604100335182_IEnumerable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604100348274_IEnumerable1.resx">
+      <DependentUpon>201604100348274_IEnumerable1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604100348590_ICollection.resx">
+      <DependentUpon>201604100348590_ICollection.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604100447341_virtual.resx">
+      <DependentUpon>201604100447341_virtual.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -169,8 +169,6 @@ namespace Music.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.Artist = album.Artist;
-            ViewBag.GenreID = new SelectList(db.Genres, "GenreID", "Name", album.GenreID);
             return View(album);
         }
 

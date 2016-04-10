@@ -22,6 +22,6 @@ namespace Music.Models
         public int ArtistID { get; set; }
         public Artist Artist { get; set; }
         public int Likes { get; set; }
-        public IEnumerable<Playlist> Playlists { get; set; }
+        public virtual ICollection<Playlist> Playlists { get; set; }
     }
 }
